@@ -1,0 +1,10 @@
+# Ignore Default file .idea (PyCharm)
+.idea/
+
+# Python ignore files
+**/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Virtual environment
+venv/

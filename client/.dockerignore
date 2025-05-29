@@ -1,0 +1,7 @@
+# Virtual environment
+.venv
+
+# Python ignore files
+__pycache__/
+*.pyc
+.pytest_cache/

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Client App Parameters</title>
+    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}?v=1">
+</head>
+<body>
+<h2 class="title">Generate Random Chains</h2>
+
+<p class="description">
+    This project generates a number of random of chains and processes them on the server.<br/>
+    Enter how many chains you want to generate and process. (Default:1 millions)
+</p>
+
+<div id="popup" class="hidden">
+    <div id="popup-content">
+        <span id="popup-close">&times;</span>
+        <p id="popup-message"></p>
+        <p id="download-error" class="hidden error-msg"></p>
+        <div id="download-links" class="hidden">
+            <a id="download-chains" href="#" download="chains.txt" class="download-btn">Download Chains</a>
+            <a id="download-responses" href="#" download="responses.txt" class="download-btn">Download Responses</a>
+        </div>
+    </div>
+</div>
+
+<form id="clientForm" method="POST" novalidate>
+    <label for="num_strings">Number of chains:</label>
+
+    <div id="input-error" class="input-error hidden"></div>
+
+    <input
+            type="number"
+            name="num_strings"
+            id="num_strings"
+            required
+            min="1"
+            placeholder="Enter number of strings to generate"
+            autocomplete="off"
+            value="1000000"
+    />
+    <br/><br/>
+
+    <button type="submit" id="submitBtn">
+        <span class="btn-text">Execute</span>
+        <span id="spinner" class="spinner"></span>
+    </button>
+</form>
+
+<div id="flash-messages" data-messages='{{ messages | tojson | safe }}'></div>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
