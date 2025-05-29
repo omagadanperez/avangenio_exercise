@@ -3,6 +3,10 @@ import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import logging
 
+# Set the path for logs folder to the current working directory (ensure it creates in the server folder)
+log_directory = os.path.join(os.path.dirname(__file__), 'logs')
+os.makedirs(log_directory, exist_ok=True)  # Create logs folder in the server directory
+
 # Basic logging setup
 logging.basicConfig(
     filename='logs/server.log',
@@ -70,7 +74,6 @@ class RequestHandler(BaseHTTPRequestHandler):
 
 
 def run_server():
-    os.makedirs("logs", exist_ok=True)
     server_address = (SERVER_HOST, SERVER_PORT)
     httpd = HTTPServer(server_address, RequestHandler)
     logging.info(f"Server starting on {SERVER_HOST}:{SERVER_PORT}")

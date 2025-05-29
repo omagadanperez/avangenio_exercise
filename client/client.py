@@ -8,6 +8,10 @@ import argparse
 import json
 import time
 
+# Set the path for logs folder to the current working directory (ensure it creates in the server folder)
+log_directory = os.path.join(os.path.dirname(__file__), 'logs')
+os.makedirs(log_directory, exist_ok=True)  # Create logs folder in the server directory
+
 # Basic logging configuration
 logging.basicConfig(
     filename='logs/client.log',
